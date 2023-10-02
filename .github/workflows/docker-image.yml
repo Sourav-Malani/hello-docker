@@ -17,9 +17,12 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
-        name: Login to Docker Hub
+        name: Build Docker Image
         run: |
           docker build -t hello-docker .
+      -
+        name: Login to Docker Hub
+        run: |
           docker login -u uthpakhi -p dckr_pat_nhEBnTXwdO2RWY7LEsM_Adxugxo
           docker tag hello-docker uthpakhi/hello-docker
           docker push uthpakhi/hello-docker
