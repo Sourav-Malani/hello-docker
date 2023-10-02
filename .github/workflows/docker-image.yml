@@ -19,7 +19,7 @@ jobs:
       -
         name: Login to Docker Hub
         run: |
-          docker build -t app .
+          docker build -t hello-docker .
           docker login -u uthpakhi -p dckr_pat_nhEBnTXwdO2RWY7LEsM_Adxugxo
-          docker tag app uthpakhi/hello-docker
+          docker tag hello-docker uthpakhi/hello-docker
           docker push uthpakhi/hello-docker
