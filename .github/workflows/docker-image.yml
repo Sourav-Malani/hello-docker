@@ -10,17 +10,23 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Login to Docker Hub
-      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-
-    - name: Build Docker Image
-      run: docker build -t UthPakhi/hello-docker:latest .
-
-    - name: Push Docker Image
-      run: docker push UthPakhi/hello-docker:latest
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Build Docker Image
+        run: |
+          docker build -t hello-docker .
+      -
+        name: Login to Docker Hub
+        run: |
+          docker login -u uthpakhi -p dckr_pat_nhEBnTXwdO2RWY7LEsM_Adxugxo
+          docker tag hello-docker uthpakhi/hello-docker
+          docker push uthpakhi/hello-docker
+        name: Run Docker Container
+      -  
+        run: |
+          docker run -d --name my-container -p 8080:80 uthpakhi/hello-docker
