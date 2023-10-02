@@ -26,7 +26,7 @@ jobs:
           docker login -u uthpakhi -p dckr_pat_nhEBnTXwdO2RWY7LEsM_Adxugxo
           docker tag hello-docker uthpakhi/hello-docker
           docker push uthpakhi/hello-docker
-        name: Run Docker Container
       -  
+        name: Run Docker Container
         run: |
           docker run -d --name my-container -p 8080:80 uthpakhi/hello-docker
